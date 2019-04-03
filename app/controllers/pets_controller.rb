@@ -1,4 +1,3 @@
-
 class PetsController < ApplicationController
 
   get '/pets' do
@@ -24,10 +23,7 @@ class PetsController < ApplicationController
     erb :'/pets/show'
   end
 
-  patch '/pets/:id' do 
-    if !params[:pet].keys.include?("owner_ids")
-    params[:pet]["owner_ids"] = []
-    end
+  post '/pets/:id' do 
     @pet = Pet.find(params[:id])
     @pet.update(params["pet"])
     if !params["owner"]["name"].empty?
